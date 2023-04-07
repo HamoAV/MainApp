@@ -4,19 +4,18 @@ metadata:
   name: my-ingress
   namespace: devops-intermidate
   annotations:
-    my-image.ingress.kubernetes.io/ssl-redirect: "false"
-    my-image.ingress.kubernetes.io/use-regex: "true"
-    my-image.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
 spec:
-  ingressClassName: alb
   rules:
-  - host: test.team2.com
+  - host: test.team3.com
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx
-            port:
-              number: 80
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-service
+              port:
+                number: 80
