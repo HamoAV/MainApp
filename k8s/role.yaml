@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: alb-ingress-controller
   name: alb-ingress-controller
-  namespace: devops-intermidate
 rules:
   - apiGroups:
       - ""
@@ -51,7 +50,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: alb-ingress-controller
-    namespace: devops-intermidate
 ---
 apiVersion: v1
 kind: ServiceAccount
